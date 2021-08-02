@@ -1,14 +1,10 @@
 package com.amasoft.bookstore.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import javax.persistence.OneToMany;
 
 @Entity
 public class Categoria implements Serializable {
@@ -28,6 +24,7 @@ public class Categoria implements Serializable {
     }
 
     public Categoria(Integer id, String nome, String descricao) {
+        super();
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;
