@@ -1,16 +1,14 @@
 package com.amasoft.bookstore.resources;
 
+import com.amasoft.bookstore.domain.Categoria;
 import com.amasoft.bookstore.dtos.CategoriaDTO;
 import com.amasoft.bookstore.service.CategoriaService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.amasoft.bookstore.domain.Categoria;
-
+import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -33,4 +31,10 @@ public class CategoriaResource{
         return ResponseEntity.ok().body(listDTO);
     }
 
+    @PostMapping
+    public ResponseEntity<Categoria> create(@RequestBody Categoria obj) {
+        obj = service.create(obj);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{id}").buildAndExpand(obj.getId()).toUri();
+        return ResponseEntity.created(uri).build();
+    }
 }
