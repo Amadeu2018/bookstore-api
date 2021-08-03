@@ -1,8 +1,8 @@
-package com.amasoft.bookstore.service.exceptions;
+package com.amasoft.bookstore.resources.exceptions;
 
 public class StandardError {
 
-    private long timestamp;
+    private Long timestamp;
     private Integer status;
     private String error;
 
@@ -10,17 +10,18 @@ public class StandardError {
         super();
     }
 
-    public StandardError(long timestamp, Integer status, String error) {
+    public StandardError(Long timestamp, Integer status, String error) {
+        super();
         this.timestamp = timestamp;
         this.status = status;
         this.error = error;
     }
 
-    public long getTimestamp() {
+    public Long getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(long timestamp) {
+    public void setTimestamp(Long timestamp) {
         this.timestamp = timestamp;
     }
 
